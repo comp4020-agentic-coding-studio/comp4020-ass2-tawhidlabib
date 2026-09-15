@@ -87,6 +87,33 @@ because they are the difference between a course and a set of pages.
   exclusion are one mechanism, so any page claiming a place keeps nobody out is
   wrong by the course's own argument.
 
+## Motion is the second ink pass, and nothing else
+
+Every animation on this site is one gesture: a second ink drum landing out of
+register and sliding into it. That is the medium the artwork is already in, so
+it is the only motion vocabulary the site gets. No scroll-triggered fade-ups,
+no easing that overshoots, nothing that moves without a reason in the print
+metaphor --- generic reveal-on-scroll is the visual tell of generated output and
+the brief penalises it.
+
+Two rules in `src/styles/register.css`, both load-bearing:
+
+- **The resting state is the finished page.** Animations only ever run
+  *towards* it, so a static `opacity: 0` is banned --- with reduced motion, or
+  in a browser missing whatever timeline the animation wanted, the content
+  would simply be gone. `spec/course-contract.test.ts` asserts this against the
+  source, because the theme's own CSS is bundled into the same file and does
+  hide `.at-heading-anchor` at rest by design.
+- **Transform and opacity only**, so motion can never shift layout.
+
+Site-wide CSS has exactly two doors: `src/layouts/CourseLayout.astro` for
+`.astro` pages and `src/layouts/PageLayout.astro` (wired as the MDX
+`defaultLayout` in `astro.config.ts`, which is why nothing appears to import
+it) for everything else. A new page that reaches for the theme's
+`ContentLayout` directly builds clean, passes every other check, and silently
+loses the site's styling --- so a spec test asserts every built page links the
+stylesheet. Use `CourseLayout`, never the theme's layout directly.
+
 ## Citations get checked against the registry, not against my memory
 
 The reading list was drafted from memory and every DOI in it was plausible. A

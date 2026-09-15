@@ -2,7 +2,7 @@
 import { render } from "astro:content";
 import { getPublishedCollection } from "astro-course-university/content";
 import RelatedContent from "astro-course-university/components/RelatedContent.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import ContentLayout from "../../layouts/CourseLayout.astro";
 import { graphCollections, siteConfig } from "../../site-config";
 
 export async function getStaticPaths() {

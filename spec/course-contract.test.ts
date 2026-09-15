@@ -159,3 +159,78 @@ describe("slides", () => {
     }
   });
 });
+
+/** Strip `@keyframes NAME { ... }` blocks, brace-matched, from minified CSS. */
+function withoutKeyframes(css: string): string {
+  let out = "";
+  let i = 0;
+  while (i < css.length) {
+    const at = css.indexOf("@keyframes", i);
+    if (at === -1) return out + css.slice(i);
+    out += css.slice(i, at);
+    const open = css.indexOf("{", at);
+    if (open === -1) return out;
+    let depth = 0;
+    let j = open;
+    for (; j < css.length; j += 1) {
+      if (css[j] === "{") depth += 1;
+      else if (css[j] === "}" && (depth -= 1) === 0) break;
+    }
+    i = j + 1;
+  }
+  return out;
+}
+
+describe("the motion layer", () => {
+  // `src/styles/register.css` reaches `.astro` pages through
+  // `src/layouts/CourseLayout.astro` and MDX pages through
+  // `src/layouts/PageLayout.astro`. A new page that imports the theme's
+  // ContentLayout directly still builds, still passes every other check, and
+  // silently loses the site's own styling. That is the mistake this asserts
+  // against -- it is the reason the wrapper layout exists.
+  const bundles = globSync("dist/_astro/*.css").map((path) => ({
+    file: path.split("/").pop() as string,
+    css: readFileSync(path, "utf8"),
+  }));
+  const motionBundles = bundles.filter((bundle) => bundle.css.includes("@keyframes reg-settle"));
+
+  it("ships the site's own stylesheet", () => {
+    expect(motionBundles.length, "no built CSS bundle defines the reg-settle keyframes").toBe(1);
+  });
+
+  it("reaches every page that renders through a layout", () => {
+    const pages = globSync("dist/**/index.html");
+    expect(pages.length, "no pages in the build").toBeGreaterThan(0);
+    const names = motionBundles.map((bundle) => bundle.file);
+    const missing = pages.filter((page) => {
+      // Decks are astromotion's own layout with its own stylesheet, and have
+      // no cards, no hero and no prose column to style.
+      if (page.includes("/decks/")) return false;
+      const html = readFileSync(page, "utf8");
+      return !names.some((name) => html.includes(name));
+    });
+    expect(missing, `not styled by the site's stylesheet: ${missing.join(", ")}`).toEqual([]);
+  });
+
+  // Unlike its neighbours this one reads source, deliberately. Astro
+  // concatenates the theme's stylesheets into the same bundle, and the theme
+  // hides `.at-heading-anchor` at rest by design, so the rule can only ever
+  // hold over the CSS this repo actually writes. That it *ships* is what the
+  // two tests above are for.
+  it("never hides content at rest waiting to be animated in", () => {
+    // Every animation in this file runs *towards* the resting state, so the
+    // resting state is the finished page. A static `opacity: 0` breaks that:
+    // under reduced motion, or on a scroll-driven timeline the browser does
+    // not support, the content is simply gone. Keyframes may start at 0.
+    const source = readFileSync(resolve("src/styles/register.css"), "utf8");
+    const rules = withoutKeyframes(source);
+    const offenders = rules
+      .split("\n")
+      .map((line, index) => [index + 1, line] as const)
+      .filter(([, line]) => /(^|[^-\w])opacity:\s*0\s*(;|$|})/.test(line));
+    expect(
+      offenders.map(([line, text]) => `line ${line}: ${text.trim()}`),
+      "register.css sets opacity: 0 outside a @keyframes block",
+    ).toEqual([]);
+  });
+});

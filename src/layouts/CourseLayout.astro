@@ -1,0 +1,22 @@
+---
+/**
+ * The theme's ContentLayout plus this site's own stylesheet.
+ *
+ * MDX pages reach `src/styles/register.css` through `PageLayout.astro`, but
+ * the `.astro` pages used the theme's ContentLayout directly, so there was no
+ * single place site-wide styling could go -- CLAUDE.md says it belongs in the
+ * layout rather than copied between pages, and until this wrapper existed
+ * there was no layout for half the site to put it in. Props and both slots
+ * pass straight through; this adds a stylesheet and nothing else.
+ */
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import type { ContentLayoutProps } from "astro-theme-university/layouts/ContentLayout.astro";
+import "../styles/register.css";
+
+type Props = ContentLayoutProps;
+---
+
+<ContentLayout {...Astro.props}>
+  <slot name="head" slot="head" />
+  <slot />
+</ContentLayout>

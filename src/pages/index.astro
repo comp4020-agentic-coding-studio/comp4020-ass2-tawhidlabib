@@ -1,7 +1,7 @@
 ---
 import Card from "astro-theme-university/components/Card.astro";
 import CardGrid from "astro-theme-university/components/CardGrid.astro";
-import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import ContentLayout from "../layouts/CourseLayout.astro";
 import heroImage from "../assets/images/hero-home.avif";
 import { courseMeta } from "../course-config";
 import { sessionLabels, siteConfig } from "../site-config";
@@ -106,7 +106,8 @@ import { sessionLabels, siteConfig } from "../site-config";
     font-size: 1.15rem;
     line-height: 1.6;
     color: var(--at-text-secondary);
-    border-left: 3px solid var(--at-border, currentColor);
+    /* The rule itself is drawn by `.lede::before` in src/styles/register.css,
+     * so that it can ink downwards on load. A border here would double it. */
     padding-left: 1rem;
     margin-block-end: 2.5rem;
   }

@@ -1,0 +1,206 @@
+/* Motion for SLOP3908, built from one idea: registration.
+ *
+ * A risograph print is made by running the paper through once per ink drum,
+ * and the second pass never lands in perfect register. That misalignment is
+ * the signature of the medium, and the site's artwork already uses it -- the
+ * portraits in `tools/make-artwork.mjs` are a gold pass with a bronze pass
+ * offset behind them. So every animation here is the same gesture: a second
+ * ink pass sliding into or out of register. Nothing fades up on scroll,
+ * nothing bounces, nothing moves that isn't ink landing on paper.
+ *
+ * Two rules this file holds to, both load-bearing:
+ *
+ * 1. The RESTING state is always the CSS default and the animation only ever
+ *    runs *towards* it. Never `opacity: 0` as a static value waiting to be
+ *    animated up. The theme's `prefers-reduced-motion` block (base.css) sets
+ *    `animation-duration: 0.01ms !important`, which snaps every animation to
+ *    its end frame -- so with motion off, or with no CSS animation support at
+ *    all, the page is simply the finished print.
+ * 2. Motion is transform and opacity only, so nothing here can shift layout
+ *    or cost a reflow.
+ *
+ * Unlayered on purpose: the theme's own rules live in `@layer at.components`,
+ * so these win without a single `!important`.
+ */
+
+:root {
+  /* The second ink. Bronze against the gold primary, as in the artwork. */
+  --reg-ink: var(--at-secondary, #8a5c13);
+  /* How far out of register a pass lands. Three pixels is about one press
+   * tolerance -- visible, never mistaken for a rendering bug. */
+  --reg-shift: 3px;
+  /* A press is mechanical: quick off the mark, then it settles and stops. */
+  --reg-ease: cubic-bezier(0.2, 0.9, 0.25, 1);
+  --reg-dur: 420ms;
+  --reg-stagger: 55ms;
+}
+
+/* The paper takes the ink: a pass sliding up into register. */
+@keyframes reg-settle {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--reg-from-x, 0), var(--reg-from-y, 0.75rem), 0);
+  }
+}
+
+/* A stamp pressed slightly askew, straightening as the ink dries. */
+@keyframes reg-press {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.35rem, 0) rotate(var(--reg-tilt, -0.8deg));
+  }
+}
+
+/* The offset pass catching up with the first one. */
+@keyframes reg-align {
+  from {
+    transform: translate3d(calc(var(--reg-shift) * -2), calc(var(--reg-shift) * -1.5), 0);
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------------- cards --
+ * A card gets a real second pass: a bronze rule set `--reg-shift` down and
+ * right of its own border. `.at-card` is `overflow: hidden`, so the offset
+ * edge is trimmed on two sides -- which is exactly what a misregistered
+ * print looks like after the guillotine. Hovering brings it into register.
+ */
+.at-card {
+  transition:
+    background-color 0.15s,
+    box-shadow 0.15s,
+    transform var(--reg-dur) var(--reg-ease);
+}
+
+.at-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--reg-ink);
+  opacity: 0.32;
+  transform: translate3d(var(--reg-shift), var(--reg-shift), 0);
+  transition:
+    transform 0.28s var(--reg-ease),
+    opacity 0.28s var(--reg-ease);
+  pointer-events: none;
+}
+
+/* Into register, and the card lifts by the same distance it gives up. */
+a.at-card:hover::after,
+a.at-card:focus-visible::after {
+  transform: translate3d(0, 0, 0);
+  opacity: 0.85;
+}
+
+a.at-card:hover,
+a.at-card:focus-visible {
+  transform: translate3d(0, calc(var(--reg-shift) * -1), 0);
+}
+
+/* The title doubles, the way overprinted type does. Keyed off the card so it
+ * fires on keyboard focus too, not just the mouse. */
+.at-card-title {
+  transition: text-shadow 0.28s var(--reg-ease);
+}
+
+a.at-card:hover .at-card-title,
+a.at-card:focus-visible .at-card-title {
+  text-shadow: var(--reg-shift) var(--reg-shift) 0 color-mix(in oklab, var(--reg-ink) 38%, transparent);
+}
+
+/* A grid prints a card at a time. Capped at the eighth: a twelve-week grid
+ * should not still be arriving three quarters of a second in. */
+.at-card-grid > .at-card {
+  animation: reg-settle var(--reg-dur) var(--reg-ease) both;
+}
+
+.at-card-grid > .at-card:nth-child(1) { animation-delay: 0ms; }
+.at-card-grid > .at-card:nth-child(2) { animation-delay: calc(var(--reg-stagger) * 1); }
+.at-card-grid > .at-card:nth-child(3) { animation-delay: calc(var(--reg-stagger) * 2); }
+.at-card-grid > .at-card:nth-child(4) { animation-delay: calc(var(--reg-stagger) * 3); }
+.at-card-grid > .at-card:nth-child(5) { animation-delay: calc(var(--reg-stagger) * 4); }
+.at-card-grid > .at-card:nth-child(6) { animation-delay: calc(var(--reg-stagger) * 5); }
+.at-card-grid > .at-card:nth-child(7) { animation-delay: calc(var(--reg-stagger) * 6); }
+.at-card-grid > .at-card:nth-child(n + 8) { animation-delay: calc(var(--reg-stagger) * 7); }
+
+/* Alternate columns come in from opposite sides, so the grid assembles
+ * rather than marching. */
+.at-card-grid > .at-card:nth-child(odd) { --reg-from-x: calc(var(--reg-shift) * -1); }
+.at-card-grid > .at-card:nth-child(even) { --reg-from-x: var(--reg-shift); }
+
+/* ------------------------------------------------------------- the page --
+ * The hero is the first pass: title and lead land, then the body.
+ */
+.at-hero-title {
+  animation: reg-settle var(--reg-dur) var(--reg-ease) both;
+}
+
+.at-hero-image {
+  animation: reg-align 700ms var(--reg-ease) both;
+}
+
+.lead {
+  animation: reg-settle var(--reg-dur) var(--reg-ease) 80ms both;
+}
+
+/* Tag pills: stamps pressed in sequence, each slightly off square. */
+.course-tags li {
+  animation: reg-press 380ms var(--reg-ease) both;
+}
+
+.course-tags li:nth-child(1) { animation-delay: 140ms; --reg-tilt: -1deg; }
+.course-tags li:nth-child(2) { animation-delay: 210ms; --reg-tilt: 0.9deg; }
+.course-tags li:nth-child(3) { animation-delay: 280ms; --reg-tilt: -0.6deg; }
+
+/* The lede's rule inks downwards, then the text arrives behind it. */
+.lede {
+  position: relative;
+  animation: reg-settle var(--reg-dur) var(--reg-ease) 200ms both;
+}
+
+.lede::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: -3px;
+  width: 3px;
+  background: var(--reg-ink);
+  transform-origin: top;
+  animation: reg-draw 520ms var(--reg-ease) 260ms both;
+}
+
+@keyframes reg-draw {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+/* ------------------------------------------------------------- in prose --
+ * A body link's underline wipes in as a second ink pass rather than the
+ * whole word changing colour. Scoped to prose: the nav, cards and skip link
+ * all have their own affordances and shouldn't grow a second one.
+ */
+/* An underline that exists only on hover is a WCAG 1.4.1 failure -- colour
+ * becomes the sole distinguisher at rest. So the real underline stays, faint,
+ * and the bronze pass overprints it slightly low, the way a second drum lands
+ * a hair off the first. */
+.at-main p > a,
+.at-main li > a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
+  text-underline-offset: 0.15em;
+  background-image: linear-gradient(var(--reg-ink), var(--reg-ink));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1.5px;
+  transition: background-size 0.22s var(--reg-ease);
+  padding-block-end: 0.05em;
+}
+
+.at-main p > a:hover,
+.at-main li > a:hover,
+.at-main p > a:focus-visible,
+.at-main li > a:focus-visible {
+  background-size: 100% 1.5px;
+}
