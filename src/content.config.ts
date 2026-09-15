@@ -70,6 +70,24 @@ export const collections = {
       .loose(),
   }),
 
+  // Readings are the fifth collection, and the only structural addition this
+  // course makes. A week that names a reading in its `related:` gets an edge in
+  // both directions: the week page lists what to read, and the reading page
+  // lists the weeks that set it. `kind` separates what you must read from what
+  // is there if the week caught you.
+  readings: defineCollection({
+    loader: courseNodeLoader("readings"),
+    schema: courseNodeSchema
+      .extend({
+        author: z.string().trim().min(1),
+        year: z.coerce.number().int().min(1800).max(2100),
+        venue: z.string().trim().min(1),
+        url: z.url().optional(),
+        kind: z.enum(["primary", "secondary"]).default("primary"),
+      })
+      .loose(),
+  }),
+
   people: defineCollection({
     loader: courseNodeLoader("people"),
     schema: ({ image }) =>

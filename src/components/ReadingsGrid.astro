@@ -1,0 +1,44 @@
+---
+import { getPublishedCollection } from "astro-course-university/content";
+import Card from "astro-theme-university/components/Card.astro";
+import CardGrid from "astro-theme-university/components/CardGrid.astro";
+
+// A reading does not carry a week of its own. The edge is declared once, on the
+// week that sets it, and read back here — so a reading can never disagree with
+// the week about whether it is on the list.
+const readings = await getPublishedCollection("readings");
+const lectures = await getPublishedCollection("lectures");
+
+const weekOf = new Map<string, number>();
+for (const lecture of lectures) {
+  for (const ref of lecture.data.related ?? []) {
+    if (!ref.startsWith("readings/")) continue;
+    const id = ref.slice("readings/".length);
+    const week = lecture.data.week as number;
+    weekOf.set(id, Math.min(weekOf.get(id) ?? week, week));
+  }
+}
+
+const rank = (id: string) => weekOf.get(id) ?? Number.MAX_SAFE_INTEGER;
+const visible = readings.sort(
+  (a, b) => rank(a.id) - rank(b.id) || a.data.author.localeCompare(b.data.author),
+);
+---
+
+<CardGrid columns={2}>
+  {
+    visible.map((reading) => (
+      <Card headingLevel="h2" title={reading.data.title} href={`/readings/${reading.id}/`}>
+        <p><small>{reading.data.author} ({reading.data.year}) · {reading.data.venue}</small></p>
+        {reading.data.description && <p>{reading.data.description}</p>}
+        <p>
+          <small>
+            {weekOf.has(reading.id) ? `Week ${weekOf.get(reading.id)}` : "Background"}
+            {" · "}
+            {reading.data.kind === "primary" ? "Read before the lecture" : "If the week caught you"}
+          </small>
+        </p>
+      </Card>
+    ))
+  }
+</CardGrid>

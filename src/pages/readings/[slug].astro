@@ -1,0 +1,34 @@
+---
+import { render } from "astro:content";
+import { getPublishedCollection } from "astro-course-university/content";
+import RelatedContent from "astro-course-university/components/RelatedContent.astro";
+import ContentLayout from "astro-theme-university/layouts/ContentLayout.astro";
+import { graphCollections, siteConfig } from "../../site-config";
+
+export async function getStaticPaths() {
+  const readings = await getPublishedCollection("readings");
+  return readings.map((reading) => ({ params: { slug: reading.id }, props: { reading } }));
+}
+
+const { reading } = Astro.props;
+const { Content } = await render(reading);
+const { author, year, venue, url, kind } = reading.data;
+---
+
+<ContentLayout title={reading.data.title} description={reading.data.description} {...siteConfig}>
+  <p>
+    <strong>{author}</strong> ({year}). <em>{venue}</em>.
+    {url && <> <a href={url}>Read it</a>.</>}
+  </p>
+  <p>
+    <small>
+      {
+        kind === "primary"
+          ? "Primary reading — read it before the lecture that sets it."
+          : "Secondary reading — not required, but it is the one to follow next."
+      }
+    </small>
+  </p>
+  <Content />
+  <RelatedContent entry={reading} collections={graphCollections} />
+</ContentLayout>
