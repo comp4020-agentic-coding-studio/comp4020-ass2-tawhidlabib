@@ -1,30 +1,34 @@
 ---
-title: Opening lecture
+title: The eight rules
 description:
-  The first lecture — what the course is, why it is shaped this way, and what
-  happens in week 1
+  Oldenburg's eight characteristics of a third place, and the argument that a
+  life needs three settings rather than two.
 week: 1
 date: 2027-02-22
 teachers:
   - noor-vickery
 slides: /decks/week-01/
+tags: ["third places", "foundational"]
 related:
-  - sessions/01-getting-started
+  - readings/oldenburg-1989
+  - sessions/round-01
 ---
 
-<!-- STARTER_CONTENT: replace this lecture, then remove this comment. -->
+There is a pub near the campus where, at about half past four on a Tuesday, the
+same four people are at the same end of the bar. None of them arranged it. Two
+of them do not know each other's surnames. If one of them stopped coming, the
+others would notice within a week and would probably not do anything about it.
 
-Replace this page. A lecture entry says what was covered and links to the pages
-that own the detail, so the lecture stays short and nothing is explained twice.
+That room is the subject of this course, and the lecture starts there rather
+than with a definition, because the definition is easier to argue with once you
+have a specific floor under it.
 
-The `related:` ref above is a graph edge: it renders on this page and on the
-session's, so declare a connection once, on whichever side is convenient.
+Oldenburg's eight characteristics come next: neutral ground, a leveller, talk as
+the main activity, accessible and accommodating, the regulars, a low profile, a
+playful mood, a home away from home. We take them one at a time and ask, of
+each, whether it is doing real work or whether it is a description of the kind
+of place Oldenburg happened to like.
 
-The page renders its `slides:` link automatically. Decks are markdown too,
-under `src/decks/`; the path is part of the lecture's API metadata.
-
-## Outline
-
-- what the course is for
-- how the weeks are shaped
-- what to do before the first session
+By the end you should be able to hold a room against all eight and say which
+ones it fails. That is the skill the whole semester is built on, and Thursday is
+the first time you use it.
