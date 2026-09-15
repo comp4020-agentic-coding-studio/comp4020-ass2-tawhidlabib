@@ -31,5 +31,7 @@ export const siteConfig = defineSiteConfig({
 
   licence: "CC-BY-NC-SA-4.0",
   socialImage: "/src/assets/images/card.png",
-  socialImageAlt: `A preview card for ${courseMeta.code}: ${courseMeta.title}`,
+  socialImageAlt:
+    "A preview card — the course code and title over a bar counter with a row " +
+    "of bottles, in flat gold and grey on cream, in a two-ink risograph print",
 });
