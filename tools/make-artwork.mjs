@@ -41,7 +41,10 @@ async function render(path, svg, width, height, format) {
   const out =
     format === "avif"
       ? pipeline.avif({ quality: 62, effort: 6 })
-      : pipeline.png({ compressionLevel: 9 });
+      : // Flat two-ink artwork over grain compresses badly as truecolour PNG
+        // (1.4 MB). A 128-colour palette is visually indistinguishable here
+        // and an order of magnitude smaller.
+        pipeline.png({ compressionLevel: 9, palette: true, colours: 128, effort: 10 });
   await out.toFile(path);
   console.log(`  ${path} (${width}x${height})`);
 }
