@@ -55,6 +55,47 @@ with a `socialImage:` frontmatter key. Both values ship as placeholders, and
 them or delete them. Nothing checks whether the card *renders*, so look at the
 deployed head.
 
+## What this course has to hold to
+
+These are course-design rules, not platform facts. `spec/course-contract.test.ts`
+holds the three that a machine can check --- every week has a lecture and a
+Round, every week sets a reading, no reading is orphaned. The rest are here
+because they are the difference between a course and a set of pages.
+
+- **Describe the place before theorising it.** Every lecture opens on a specific
+  room --- a counter, a chair, a laundromat --- and reaches the theory from
+  there. The home page does it too. A page that opens with a definition has got
+  it backwards, and so has a student's Place Audit.
+- **Every week names its reading and says what the reading is *for*.** Not a
+  citation in a list: a sentence about why this course sets this paper and what
+  to take from it, which is deliberately not always what the paper is about.
+- **Argue with the readings.** Oldenburg is set in week 1 and disputed for
+  eleven weeks. A lecture that summarises its paper has wasted the week.
+- **No label-lists.** No `Core Concept:` / `Key Text:` frontmatter-in-prose, no
+  bulleted summaries standing in for an argument. That shape is the tell of
+  generated curriculum, and the brief penalises it directly. Bullets are for
+  instructions --- what to count, what to bring --- not for ideas.
+- **Student-facing prose is second person and concrete.** "Sit where you can see
+  the door" beats "students should position themselves advantageously".
+- **Every Round brief gives a method, not just a destination.** Where, when, how
+  long, what to fix in writing beforehand, and what has to be true by the end.
+  The `spec:` key carries the last of those.
+- **Ethics are stated as rules with a list, never as principles.** A named
+  excluded-sites list, a sentence a student can say out loud if challenged. A
+  principle a nervous 20-year-old cannot apply in a doorway is not a policy.
+- **Name the boundary.** The course's own position is that belonging and
+  exclusion are one mechanism, so any page claiming a place keeps nobody out is
+  wrong by the course's own argument.
+
+## Look at the generated artwork, not the code that generates it
+
+`pnpm artwork` rebuilds the four images from `tools/make-artwork.mjs`. Set
+`ARTWORK_PROOFS=/tmp/art-proofs` to also emit small PNG proofs, because avif and
+a 2560px hero are both awkward to open and judging SVG by reading it does not
+work. The first pass had bottles floating off the counter and a head detached
+from its shoulders; neither was visible in the source and both were obvious in
+the proof.
+
 ## The checks
 
 `pnpm check` is types, the production build and the `spec/` suite; `pnpm build`
