@@ -3,10 +3,10 @@ import { slopBranding } from "astro-theme-slop";
 import { courseMeta } from "./course-config";
 
 // The underlying collection and URL remain `sessions`; these labels are the
-// language students see. Change them to Studios, Tutorials, Expeditions, etc.
+// language students see. A Round is a field visit — and a round at the bar.
 export const sessionLabels = {
-  singular: "Session",
-  plural: "Sessions",
+  singular: "Round",
+  plural: "Rounds",
 } as const;
 
 export const graphCollections = ["sessions", "assessments", "lectures", "people"];
