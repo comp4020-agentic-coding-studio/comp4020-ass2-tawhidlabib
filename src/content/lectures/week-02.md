@@ -5,7 +5,7 @@ description:
 week: 2
 date: 2027-03-01
 teachers:
-  - idris-fenn
+  - teo-ballantyne
 related:
   - sessions/02-first-review
   - assessments/assignment-1
