@@ -111,6 +111,23 @@ describe("the reading list", () => {
       .map((reading) => reading.id);
     expect(orphans, `nothing links ${orphans.join(", ")}`).toEqual([]);
   });
+
+  // Whether a citation is *correct* is checked against Crossref by
+  // `pnpm verify:citations`, which needs the network and so is not part of
+  // `pnpm check`. This is what can be asserted offline and is not already
+  // guaranteed elsewhere: the `readings` schema makes author, year and venue
+  // required, so an assertion about those can never fail from source, but it
+  // accepts any well-formed `url`. A DOI outlives a publisher's URL scheme,
+  // and it is also what makes the Crossref check above possible at all.
+  it("links every paper by DOI rather than by publisher URL", () => {
+    const readings = nodesOfType("readings");
+    expect(readings.length, "no readings in the build").toBeGreaterThan(0);
+    const notDoi = readings
+      .map((reading) => [reading.id, reading.meta?.url] as const)
+      .filter(([, url]) => url !== undefined && !String(url).startsWith("https://doi.org/"))
+      .map(([id, url]) => `${id} -> ${String(url)}`);
+    expect(notDoi, `not a doi.org URL: ${notDoi.join(", ")}`).toEqual([]);
+  });
 });
 
 describe("assessment", () => {

@@ -87,6 +87,18 @@ because they are the difference between a course and a set of pages.
   exclusion are one mechanism, so any page claiming a place keeps nobody out is
   wrong by the course's own argument.
 
+## Citations get checked against the registry, not against my memory
+
+The reading list was drafted from memory and every DOI in it was plausible. A
+wrong DOI is the one mistake on this site that survives everything `pnpm check`
+runs: it is well-formed, the link checker only walks internal links, and it
+resolves --- to somebody else's paper. `pnpm verify:citations` compares each
+reading's author, year, venue and title against Crossref. It stays out of `pnpm
+check` on purpose: it needs the network, and a gate that fails when an API is
+slow is a gate you learn to skip. Run it whenever the reading list changes. The
+five books have no DOI, so it names them for checking by hand instead of
+reporting a silent pass.
+
 ## Look at the generated artwork, not the code that generates it
 
 `pnpm artwork` rebuilds the four images from `tools/make-artwork.mjs`. Set
