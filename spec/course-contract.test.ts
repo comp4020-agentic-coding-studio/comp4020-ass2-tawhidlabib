@@ -19,9 +19,15 @@ interface ApiNode {
   meta?: Record<string, unknown>;
 }
 
+interface ApiEdge {
+  from: string;
+  to: string;
+}
+
 interface CourseApi {
   course: { code: string; level: number; startDate: string; endDate: string };
   nodes: ApiNode[];
+  edges: ApiEdge[];
 }
 
 const api = JSON.parse(readFileSync(resolve("dist/api/index.json"), "utf8")) as CourseApi;
@@ -56,6 +62,54 @@ describe("the teaching calendar", () => {
       (week) => !weeks.has(week),
     );
     expect(missing, `no dated session or lecture for week(s) ${missing.join(", ")}`).toEqual([]);
+  });
+});
+
+// Edges are undirected in the graph but stored one way round in the API, and
+// each edge is declared exactly once in frontmatter --- the lecture owns its
+// reading edges, the assessment owns its week edges. So a neighbour lookup has
+// to read both ends.
+const neighbours = (id: string): string[] =>
+  api.edges.flatMap((edge) =>
+    edge.from === id ? [edge.to] : edge.to === id ? [edge.from] : [],
+  );
+
+const weekOf = (node: ApiNode): number => Number(node.meta?.week);
+
+// The two checks below are course-design decisions rather than platform facts.
+// Nothing in the starter requires a course to run a field visit every week or
+// to set a reading for each one; this course does, and these fail if a later
+// edit quietly drops one.
+describe("the shape of a week", () => {
+  it(`gives all ${TEACHING_WEEKS} weeks both a lecture and a Round`, () => {
+    const lectureWeeks = new Set(nodesOfType("lectures").map(weekOf));
+    const roundWeeks = new Set(nodesOfType("sessions").map(weekOf));
+    const incomplete = Array.from({ length: TEACHING_WEEKS }, (_, i) => i + 1)
+      .filter((week) => !lectureWeeks.has(week) || !roundWeeks.has(week))
+      .map((week) => `week ${week}: ${lectureWeeks.has(week) ? "" : "no lecture"}${
+        !lectureWeeks.has(week) && !roundWeeks.has(week) ? " and " : ""
+      }${roundWeeks.has(week) ? "" : "no Round"}`);
+    expect(incomplete, incomplete.join("; ")).toEqual([]);
+  });
+});
+
+describe("the reading list", () => {
+  it("sets at least one reading for every week", () => {
+    const lectures = nodesOfType("lectures");
+    expect(lectures.length, "no lectures in the build").toBe(TEACHING_WEEKS);
+    const unread = lectures
+      .filter((lecture) => !neighbours(lecture.id).some((id) => id.startsWith("readings/")))
+      .map((lecture) => `week ${weekOf(lecture)}`);
+    expect(unread, `no reading set for ${unread.join(", ")}`).toEqual([]);
+  });
+
+  it("leaves no reading unattached to a week", () => {
+    const readings = nodesOfType("readings");
+    expect(readings.length, "no readings in the build").toBeGreaterThan(0);
+    const orphans = readings
+      .filter((reading) => neighbours(reading.id).length === 0)
+      .map((reading) => reading.id);
+    expect(orphans, `nothing links ${orphans.join(", ")}`).toEqual([]);
   });
 });
 
