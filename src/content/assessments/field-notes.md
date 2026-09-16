@@ -27,6 +27,8 @@ related:
   - lectures/week-03
   - lectures/week-04
   - sessions/round-01
+  - sessions/round-02
+  - sessions/round-03
   - sessions/round-04
 ---
 

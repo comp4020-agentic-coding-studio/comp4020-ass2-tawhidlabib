@@ -1,5 +1,5 @@
 ---
-title: Mingling, observing, and lingering — everyday public spaces and their implications for well-being and social relations
+title: "Mingling, observing, and lingering: everyday public spaces and their implications for well-being and social relations"
 author: Cattell, Dines, Gesler & Curtis
 year: 2008
 venue: Health & Place 14(3), 544–561

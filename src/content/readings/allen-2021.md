@@ -1,5 +1,5 @@
 ---
-title: Belonging — a review of conceptual issues, an integrative framework, and directions for future research
+title: "Belonging: a review of conceptual issues, an integrative framework, and directions for future research"
 author: Allen, Kern, Rozek, McInerney & Slavich
 year: 2021
 venue: Australian Journal of Psychology 73(1), 87–102

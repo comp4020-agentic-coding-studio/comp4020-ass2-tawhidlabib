@@ -1,5 +1,5 @@
 ---
-title: Where everybody knows your (screen) name — online games as third places
+title: "Where everybody knows your (screen) name: online games as third places"
 author: Steinkuehler & Williams
 year: 2006
 venue: Journal of Computer-Mediated Communication 11(4), 885–909

@@ -1,5 +1,5 @@
 ---
-title: Social relationships and mortality risk — a meta-analytic review
+title: "Social relationships and mortality risk: a meta-analytic review"
 author: Holt-Lunstad, Smith & Layton
 year: 2010
 venue: PLoS Medicine 7(7), e1000316

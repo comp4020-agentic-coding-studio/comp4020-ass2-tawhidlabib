@@ -22,9 +22,8 @@ strangers. A hospital waiting room produces more, under worse conditions. A bus
 stop produces four. None of these is anybody's home away from home and none of
 them wants to be.
 
-Cattell and colleagues give us three verbs — mingling, observing, lingering — and
-the crucial point is that only the first is the sociable behaviour Oldenburg
-describes. Observing and lingering are what most people are doing in most public
+Cattell and colleagues give us three verbs — mingling, observing, lingering —
+and only the first is the sociable behaviour Oldenburg describes. Observing and lingering are what most people are doing in most public
 space, and the paper finds that they carry benefit too. You do not have to talk
 to anyone for a room to do something for you.
 

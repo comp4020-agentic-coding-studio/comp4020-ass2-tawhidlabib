@@ -1,5 +1,5 @@
 ---
-title: Attachment and Loss, Volume 1 — Attachment
+title: "Attachment and Loss, Volume 1: Attachment"
 author: John Bowlby
 year: 1982
 venue: Basic Books (2nd edition)

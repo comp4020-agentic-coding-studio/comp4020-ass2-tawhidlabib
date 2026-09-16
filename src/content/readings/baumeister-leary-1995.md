@@ -1,5 +1,5 @@
 ---
-title: The need to belong — desire for interpersonal attachments as a fundamental human motivation
+title: "The need to belong: desire for interpersonal attachments as a fundamental human motivation"
 author: Baumeister & Leary
 year: 1995
 venue: Psychological Bulletin 117(3), 497–529

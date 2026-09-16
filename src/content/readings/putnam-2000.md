@@ -1,5 +1,5 @@
 ---
-title: Bowling Alone — the collapse and revival of American community
+title: "Bowling Alone: the collapse and revival of American community"
 author: Robert D. Putnam
 year: 2000
 venue: Simon & Schuster
