@@ -66,10 +66,11 @@
  * print looks like after the guillotine. Hovering brings it into register.
  */
 .at-card {
+  /* The theme's own two transitions, kept verbatim. Nothing is added: the card
+   * box does not move on hover, only the ink layer below does. */
   transition:
     background-color 0.15s,
-    box-shadow 0.15s,
-    transform var(--reg-dur) var(--reg-ease);
+    box-shadow 0.15s;
 }
 
 .at-card::after {
@@ -85,28 +86,26 @@
   pointer-events: none;
 }
 
-/* Into register, and the card lifts by the same distance it gives up. */
+/* Into register. Only the ink moves: the card itself stays exactly where it
+ * is, so nothing translates the text under the cursor. An earlier pass lifted
+ * the whole card by the distance the ink gave up, which looked right but
+ * carried the words with it and softened them through GPU compositing
+ * mid-transition. The paper does not move under the press; the drum registers
+ * onto it. Feedback is still unambiguous -- the theme's background and shadow
+ * change, and the bronze rule closes a 3px gap and nearly triples in weight.
+ */
 a.at-card:hover::after,
 a.at-card:focus-visible::after {
   transform: translate3d(0, 0, 0);
   opacity: 0.85;
 }
 
-a.at-card:hover,
-a.at-card:focus-visible {
-  transform: translate3d(0, calc(var(--reg-shift) * -1), 0);
-}
-
-/* The title doubles, the way overprinted type does. Keyed off the card so it
- * fires on keyboard focus too, not just the mouse. */
-.at-card-title {
-  transition: text-shadow 0.28s var(--reg-ease);
-}
-
-a.at-card:hover .at-card-title,
-a.at-card:focus-visible .at-card-title {
-  text-shadow: var(--reg-shift) var(--reg-shift) 0 color-mix(in oklab, var(--reg-ink) 38%, transparent);
-}
+/* Type is left alone on hover. An earlier pass overprinted the card title with
+ * an offset ghost, which is what a misregistered press really does to type --
+ * but at body sizes it reads as a rendering fault rather than as ink, and it
+ * makes the title harder to read at the exact moment someone is reading it.
+ * The ink pass moves; the words do not.
+ */
 
 /* A grid prints a card at a time. Capped at the eighth: a twelve-week grid
  * should not still be arriving three quarters of a second in. */
