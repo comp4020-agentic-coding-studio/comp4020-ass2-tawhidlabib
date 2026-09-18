@@ -43,22 +43,27 @@ policy page and a named excluded-sites list, not a principle a test could
 enforce — a nervous 20-year-old needs a sentence they can say out loud, not a
 green check.
 
-I didn't take a green suite as proof. Every new assertion was mutation-tested
-before landing, and two did not survive it —
-the calendar test passed on a week missing its Round entirely, because it only
-checked "session OR lecture," so I split it
-([`3819c60`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/3819c60));
-and a citation-completeness check I wrote by hand turned out redundant with the
-content schema, which already throws before the test can even run
-([`860c477`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/860c477)).
-The artwork was judged from rendered PNG proofs, not the SVG source that
-generated it: the first pass had bottles floating off the counter, invisible
-in the code and obvious in the image
-([`b3ece25`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b3ece25),
-[`9b1aaca`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/9b1aaca)).
-And the prose pass was a full read, not a sample — five specific slop tells
-fixed by hand
-([`ed317e3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/ed317e3)),
-because a spot check would have missed exactly the sentence that gave the
-whole thing away.
-
+I didn't take a green suite as proof, and the last week was mostly finding out
+why. Four navigation pages had shipped with no `<h1>` while axe called all
+fifty-two clean: the theme's worker returns `results.violations` and never
+reads `results.incomplete`, and under jsdom a missing heading can only come
+back incomplete
+([`d2283c3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d2283c3)).
+A check that cannot fail launders absence of evidence into evidence. Ten
+contradictions hid differently — each page was internally consistent and
+disagreed only with other pages, so the home page offered waiting rooms no
+Round visits
+([`2ea4cb9`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/2ea4cb9)).
+Reading one file at a time, which is how it was written, cannot see those.
+Mutation testing showed five of the twelve assertions could not fail
+([`a9b41d3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/a9b41d3)).
+Last I audited this account: four of its claims were contradicted by the repo,
+and two readings misstated their papers
+([`bc3df86`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/bc3df86),
+[`b95d05b`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b95d05b)).
+The artwork went the same way — judged from rendered proofs, not the SVG,
+because bottles floating off the counter were invisible in the source and
+obvious in the image
+([`b3ece25`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b3ece25))
+— and the prose pass was a full read, not a sample
+([`ed317e3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/ed317e3)).
