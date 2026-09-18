@@ -203,3 +203,18 @@ a.at-card:focus-visible::after {
 .at-main li > a:focus-visible {
   background-size: 100% 1.5px;
 }
+
+/* The theme's `prefers-reduced-motion` block (base.css) resets
+ * `animation-duration`, `animation-iteration-count` and `transition-duration`,
+ * but not `animation-delay` --- and every animation in this file uses
+ * `both` fill-mode with a delay, so the backwards fill was still applying the
+ * `from` frame (`opacity: 0`) for up to 385ms with motion turned off. The home
+ * page's cards sat invisible and then popped in, staggered, which is exactly
+ * the failure rule 1 above exists to prevent. Unlayered, so this wins. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-delay: 0s !important;
+  }
+}
