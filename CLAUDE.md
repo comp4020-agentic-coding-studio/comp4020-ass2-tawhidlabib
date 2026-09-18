@@ -63,10 +63,13 @@ holds the three that a machine can check --- every week has a lecture and a
 Round, every week sets a reading, no reading is orphaned. The rest are here
 because they are the difference between a course and a set of pages.
 
-- **Describe the place before theorising it.** Every lecture opens on a specific
-  room --- a counter, a chair, a laundromat --- and reaches the theory from
-  there. The home page does it too. A page that opens with a definition has got
-  it backwards, and so has a student's Place Audit.
+- **Describe the place before theorising it.** No lecture opens on a
+  definition --- that is the hard rule. Where the week has a room it opens on
+  that room --- a counter, a chair, a laundromat --- and reaches the theory from
+  there; where the week is a study or a number (Cyberball, the minimal groups,
+  308,000 people) it opens on that instead, described as concretely as a room.
+  The home page opens on a room. A page that opens with a definition has got it
+  backwards, and so has a student's Place Audit.
 - **Every week names its reading and says what the reading is *for*.** Not a
   citation in a list: a sentence about why this course sets this paper and what
   to take from it, which is deliberately not always what the paper is about.

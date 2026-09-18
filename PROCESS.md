@@ -5,8 +5,7 @@ lecture and twelve Thursdays of fieldwork against one argument: a third place
 is not a nice-to-have amenity but a structural need, and the exclusion that
 makes a regular feel like a regular is the same mechanism that keeps everyone
 else out. Fourteen readings, three assessments (field notes, a place audit, a
-proposal), and every week reaches the theory from a specific room rather than
-a definition.
+proposal), and no week reaches the theory from a definition.
 
 **Live:** https://comp4020-agentic-coding-studio.github.io/comp4020-ass2-tawhidlabib/
 
@@ -16,7 +15,7 @@ I narrowed it to third places before writing a word of content
 ([`03f207a`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/03f207a))
 because a survey lets every week stand alone, and I wanted weeks that argue
 with each other — Oldenburg set in week 1 and disputed for eleven more. That
-cost breadth: whole third-place literatures (libraries, barbershops) never
+cost breadth: whole third-place literatures (libraries, community gardens) never
 made the cut. It bought a course a student can actually hold in their head as
 one claim instead of twelve.
 
@@ -45,7 +44,7 @@ enforce — a nervous 20-year-old needs a sentence they can say out loud, not a
 green check.
 
 I didn't take a green suite as proof. Every new assertion was mutation-tested
-before landing, and two were deleted once mutation showed they couldn't fail —
+before landing, and two did not survive it —
 the calendar test passed on a week missing its Round entirely, because it only
 checked "session OR lecture," so I split it
 ([`3819c60`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/3819c60));
