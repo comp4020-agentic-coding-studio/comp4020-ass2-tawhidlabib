@@ -28,9 +28,12 @@ function frontmatter(source) {
   return data;
 }
 
-// Titles and venues are stored for reading, not for matching: em dashes stand
-// in for the colons YAML would choke on, and publishers emit `&amp;`. Compare
-// on letters and digits alone.
+// Titles and venues are stored for reading, not for matching. Crossref and this
+// repo disagree on punctuation in ways that mean nothing: subtitle separators,
+// `&amp;` for `&`, curly versus straight quotes. Compare on letters and digits
+// alone. (An earlier version of this comment blamed em dashes on YAML choking
+// on colons. YAML never choked --- `ed317e3` fixed those titles by quoting
+// them --- so the workaround outlived its reason by several commits.)
 const fold = (value) =>
   String(value)
     .replace(/&amp;/g, "&")

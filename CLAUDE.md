@@ -30,8 +30,9 @@ literal `/comp4020-ass2-...` anywhere.
   (`href="/sessions/"`) skips that handling and 404s on the live site --- the
   build's link checker catches it, so read the build output rather than trusting
   localhost.
-- `src/layouts/PageLayout.astro` is the layout every page renders through, and
-  site-wide styling belongs there, not copied between pages.
+- Site-wide styling belongs in a layout, never copied between pages. There are
+  two layouts and which one applies is not obvious --- see "Site-wide CSS has
+  exactly two doors" below before you add any.
 - Commit `pnpm-lock.yaml` with any dependency change: CI installs with
   `--frozen-lockfile`.
 - The collection key is the whole address: file, page, API path and `related:`
