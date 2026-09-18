@@ -14,7 +14,8 @@ tags: ["networks", "weak ties"]
 Granovetter's argument is structural. Your close friends know each other and
 know what you know; the acquaintance you see once a month is your only bridge to
 a different cluster of information. Hence the finding that started it: people
-found jobs through contacts they saw rarely, not through their closest friends.
+found jobs through contacts they saw occasionally, not through the friends they
+saw most.
 
 Third places are weak-tie factories. You know the man at the end of the bar well
 enough to say hello and not well enough to have his number, and that is not a

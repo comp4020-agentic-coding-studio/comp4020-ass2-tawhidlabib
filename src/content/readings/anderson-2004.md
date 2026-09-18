@@ -12,10 +12,12 @@ tags: ["ethnography", "third places"]
 ---
 
 Anderson spent years watching Reading Terminal Market in Philadelphia, a place
-where a racially divided city mixes without incident. He calls it a canopy: a
-setting under which people practise civility with strangers, watch each other do
-it, and take the practice elsewhere. The market is not neutral by accident — the
-food stalls, the shared seating and the sheer density of eyes all do work.
+where a racially divided city mixes and mostly manages it. He calls it a canopy:
+a setting under which people practise civility with strangers, watch each other
+do it, and take the practice elsewhere. The market is not neutral by accident —
+the food stalls, the shared seating and the sheer density of eyes all do work.
+Nor is the canopy reliable, and he records it failing; a place that held nobody
+at arm's length would be the first this course had found.
 
 This is the model for your own fieldwork, so read it twice: once for the
 argument, once for how he writes down what he saw. Notice how much of the paper
