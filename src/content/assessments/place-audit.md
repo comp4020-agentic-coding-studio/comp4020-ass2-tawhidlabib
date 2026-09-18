@@ -24,6 +24,15 @@ spec:
   - the audit states who the place excludes and at what cost
   - at least one observation that does not fit your argument is reported and dealt with
   - 2500 words, excluding notes and references
+related:
+  - lectures/week-05
+  - lectures/week-07
+  - lectures/week-08
+  - lectures/week-09
+  - sessions/round-05
+  - sessions/round-09
+  - readings/oldenburg-1989
+  - readings/cattell-2008
 ---
 
 Pick one place and argue about it for 2500 words.
@@ -51,9 +60,9 @@ place attached will lose the first thirty and a description with no reading
 behind it will lose the second.
 
 **Disagree with something.** At least one of the readings should be wrong about
-your place, or right for a reason its authors did not give. You have four
-published papers a week and a room you have sat in three times; you are the
-world expert on the intersection.
+your place, or right for a reason its authors did not give. You have twelve
+set papers and a room you have sat in three times; on that intersection you
+are the world expert.
 
 **Report what does not fit.** Every audit turns up an observation that spoils the
 story. The Tuesday that contradicted the pattern, the regular who does not

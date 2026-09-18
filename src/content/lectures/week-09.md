@@ -37,3 +37,7 @@ So the honest verdict is that the game satisfies the rules and the rules were no
 built to catch what is different about it. That is a result about Oldenburg as
 much as about the game, and it is the last time in this course that we use the
 eight rules as a scoring sheet without arguing with them.
+
+*This Monday is the Anzac Day public holiday — 25 April 2027 falls on a Sunday,
+so the ACT observes the Monday. The lecture is recorded and released Monday
+morning; the Thursday Round runs as normal.*

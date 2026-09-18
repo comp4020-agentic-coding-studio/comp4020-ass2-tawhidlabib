@@ -54,7 +54,8 @@ export const courseMeta = slopCourseMetaSchema.parse({
   endDate: "2027-05-28",
   description:
     "A fieldwork course on third places — the pub, the barbershop, the " +
-    "laundromat, the guild hall. You will watch one of them all semester and " +
-    "argue for what makes somewhere worth going back to.",
+    "laundromat, the guild hall. You will sit in a different one most weeks, " +
+    "return to one until you can argue about it, and make the case for a " +
+    "place that should exist.",
   tags: ["third places", "belonging", "fieldwork"],
 }) satisfies CourseMetaInput;

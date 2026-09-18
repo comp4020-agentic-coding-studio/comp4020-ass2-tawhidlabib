@@ -14,20 +14,30 @@ related:
   - sessions/round-12
 ---
 
-The field has used *belonging* to mean a feeling, a need, a relationship and a
-place, frequently in the same paper. Allen and colleagues separate four
-components — competencies, opportunities, motivations, and perceptions — and
-argue that a good share of the disagreement in this literature is two people
-measuring different ones.
+There is a laundromat in Kingston that closed a year after its dryers were
+replaced with better ones. Nobody objected to the dryers. They were faster, so
+the wait went from forty minutes to twelve, and twelve minutes is not long
+enough to talk to anybody.
 
-That framework is the tool for the last thing you do here. A place can create
-opportunities and still fail because nobody arriving has the competencies to use
-them. It can be full of motivated people with nowhere to put the motivation. It
-can succeed on all three and still fail on perception, which is the case where
-everybody is included and somebody still feels they are not.
+You have had Allen's four components since week 10. This is the week you use
+them forwards, as a design tool, instead of backwards as a description. The
+laundromat lost none of its opportunity — the room stayed open, stayed free,
+stayed on the corner. What it lost was the *duration* that made the opportunity
+usable, and there is no component called duration. Every proposal in the room on
+Thursday will fail on one of the four or on something the four do not name; the
+useful question is which, and you should be able to answer it about your own.
 
-Being able to say which of the four your proposed place targets is most of the
-difference between a proposal and a wish.
+Perception is the one to handle carefully, because it is where this course's
+argument bites back. A room can be read as closed by somebody the regulars would
+swear was welcome. That reading is not a misunderstanding to be corrected. It is
+information about who wrote the room's rules, and you have eleven weeks of
+evidence that the warmth and the edge are one mechanism. So do not propose a
+place that excludes nobody — there is no such place, and claiming one is the
+fastest way to lose this assessment. Propose a place, name who it keeps out, and
+argue that the cost is worth paying.
+
+Naming which of the four your place supplies, and who pays for it, is most of
+the difference between a proposal and a wish.
 
 Then the closing argument, which is the course's own position and one you are
 free to disagree with. Twelve weeks of evidence suggest that the good places

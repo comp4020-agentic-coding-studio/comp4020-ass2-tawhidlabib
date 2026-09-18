@@ -20,8 +20,8 @@ Read this whole brief before you choose a site.
 
 **Out of bounds, without exception.** Hospital and clinic waiting rooms. Any
 mental health, sexual health or addiction service. Court buildings. Social
-security offices. Places of worship during a service. Any site where the people
-present are identifiable as users of a specific service. The reason is the same
+security offices. Places of worship during a service. Schools. Any site where
+the people present are identifiable as users of a specific service. The reason is the same
 in every case: nobody there chose to be observed, several of them are having the
 worst week of their year, and an undergraduate exercise is not a good enough
 reason.

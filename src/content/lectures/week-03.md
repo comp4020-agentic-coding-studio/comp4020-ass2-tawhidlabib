@@ -31,3 +31,7 @@ are cultural, some are a door that is hard to find, and some are a set of
 regulars who go quiet when a stranger walks in. The room does not have to intend
 any of it. This is the lecture where the course stops being a celebration of
 third places and starts being an investigation of them.
+
+*This Monday is Canberra Day. The lecture is recorded and released Monday
+morning instead of being delivered live; the Thursday Round runs as normal, and
+it needs the whole cohort in the room, so read the brief before you come.*

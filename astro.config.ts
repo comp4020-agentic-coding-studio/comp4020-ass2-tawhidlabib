@@ -19,6 +19,10 @@ export default defineConfig({
   trailingSlash: "always",
   integrations: [
     universityTheme({
+      // The theme falls back to siteName: "Site" without this, which is what
+      // llms.txt puts on its first line. site-config.ts feeds a different
+      // consumer, so the name has to be given here too.
+      name: "Slop University",
       defaultLayout: "src/layouts/PageLayout.astro",
       // The whole brand choice: three colour tokens and a set of lockups. Keep
       // institutional brand packages and assets out of this fictional site.
