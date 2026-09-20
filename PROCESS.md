@@ -2,68 +2,97 @@
 
 SLOP3908, *Regulars: The Psychology of Third Places*, is twelve Mondays of
 lecture and twelve Thursdays of fieldwork against one argument: a third place
-is not a nice-to-have amenity but a structural need, and the exclusion that
-makes a regular feel like a regular is the same mechanism that keeps everyone
-else out. Fourteen readings, three assessments (field notes, a place audit, a
-proposal), and no week reaches the theory from a definition.
+is not an amenity but a structural need, and the exclusion that makes a regular
+feel like a regular is the same mechanism that keeps everyone else out.
+Fourteen readings, three assessments, and no week opens on a definition.
 
 **Live:** https://comp4020-agentic-coding-studio.github.io/comp4020-ass2-tawhidlabib/
 
-The course began, honestly, as the shape an agent defaults to: a twelve-week
-survey of "belonging," each week a different facet, no argument to hold onto.
-I narrowed it to third places before writing a word of content
-([`03f207a`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/03f207a))
-because a survey lets every week stand alone, and I wanted weeks that argue
-with each other — Oldenburg set in week 1 and disputed for eleven more. That
-cost breadth: whole third-place literatures (libraries, community gardens) never
-made the cut. It bought a course a student can actually hold in their head as
-one claim instead of twelve.
+## The decisions that mattered
 
-The decisions that mattered went into `CLAUDE.md`, not just the readings.
-"Describe the place before theorising it" and "no label-lists" are there
-because the agent's default output *is* a label-list — `Core Concept:`
-frontmatter dressed as prose — and I only caught it by reading the generated
-lectures end to end, not by skimming. Three of those rules are held by a spec
-test as well as a sentence
+### Narrowing the topic before writing content
+
+The course began as the shape an agent defaults to: a twelve-week survey of
+"belonging," with no argument to hold onto.
+
+I narrowed it to third places
+([`03f207a`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/03f207a)),
+because a survey lets every week stand alone and I wanted weeks that argue with
+each other — Oldenburg set in week 1 and disputed for eleven more.
+
+That cost breadth, and bought a course a student can hold as one claim instead
+of twelve.
+
+### Encoding the rules a machine can hold
+
+The agent's default output *is* a label-list — `Core Concept:` frontmatter
+dressed as prose — and I only caught it by reading the lectures end to end.
+
+I wrote the rules into `CLAUDE.md`, then gave three of them a test as well as a
+sentence
 ([`3819c60`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/3819c60)):
-every week has both a lecture and a Round, every week sets a reading, no
-reading is orphaned. Two more rules came out of being caught rather than
-anticipated: a DOI can be well-formed, resolve, and still be the wrong paper,
-which is why `verify:citations` checks against Crossref instead of my memory
-([`860c477`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/860c477));
-and the theme's own reveal-on-scroll defaults are the visual tell of generated
-output, which is why motion is pinned to one gesture — transform and opacity
-only, never a static `opacity: 0` at rest
+every week has a lecture and a Round, every week sets a reading, no reading is
+orphaned. Motion is pinned to one gesture, never a static `opacity: 0` at rest
 ([`d9fd569`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d9fd569)).
 
-What I left out was voice and ethics-in-practice: no test can tell prose from
-slop, so "argue with the readings" stays a `CLAUDE.md` rule a person reads, not
-an assertion. The ethics of observing strangers in a fieldwork course is a
-policy page and a named excluded-sites list, not a principle a test could
-enforce — a nervous 20-year-old needs a sentence they can say out loud, not a
-green check.
+Rules a test holds get held. The rest are prose a person has to read.
 
-I didn't take a green suite as proof, and the last week was mostly finding out
-why. Four navigation pages had shipped with no `<h1>` while axe called all
-fifty-two clean: the theme's worker returns `results.violations` and never
+### A check that could not fail
+
+Four navigation pages shipped with no `<h1>` while axe reported all fifty-two
+clean, every time.
+
+I read the worker, not its report: it returns `results.violations` and never
 reads `results.incomplete`, and under jsdom a missing heading can only come
-back incomplete
+back incomplete. I added them, and a test that counts them
 ([`d2283c3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d2283c3)).
-A check that cannot fail launders absence of evidence into evidence. Ten
-contradictions hid differently — each page was internally consistent and
-disagreed only with other pages, so the home page offered waiting rooms no
-Round visits
+
+A check that cannot fail launders absence of evidence into evidence. I now ask
+of a green check what would make it red.
+
+### Contradictions that lived between pages
+
+Ten claims disagreed across the site while every page stayed internally
+consistent — the home page offered waiting rooms no Round visits.
+
+I read across the files instead of through them one at a time, which is how
+they were written
 ([`2ea4cb9`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/2ea4cb9)).
-Reading one file at a time, which is how it was written, cannot see those.
-Mutation testing showed five of the twelve assertions could not fail
+
+Single-file review cannot see a contradiction that needs two files to exist.
+
+### Trusting the sources, then checking them
+
+A DOI can be well-formed, resolve, and still be the wrong paper.
+
+`verify:citations` now checks every reading against Crossref instead of my
+memory
+([`860c477`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/860c477)).
+I swept the prose claims the same way and found two readings misstating their
+own papers
+([`b95d05b`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b95d05b)).
+
+Twelve claim-sets were right; being right twelve times is not evidence about
+the thirteenth.
+
+### Auditing the audit
+
+A green suite is not proof, and neither is this document.
+
+I mutation-tested the suite and five of its twelve assertions could not fail
 ([`a9b41d3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/a9b41d3)).
-Last I audited this account: four of its claims were contradicted by the repo,
-and two readings misstated their papers
-([`bc3df86`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/bc3df86),
-[`b95d05b`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b95d05b)).
-The artwork went the same way — judged from rendered proofs, not the SVG,
-because bottles floating off the counter were invisible in the source and
-obvious in the image
-([`b3ece25`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b3ece25))
-— and the prose pass was a full read, not a sample
+Then I turned it on this page: four of its claims were contradicted by the repo
+([`bc3df86`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/bc3df86)).
+The artwork was judged from rendered proofs, not the SVG that made it
+([`b3ece25`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b3ece25)),
+and the prose pass was a full read, not a sample
 ([`ed317e3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/ed317e3)).
+
+The last thing to audit is always the instrument you audited with.
+
+## What I left out
+
+No test can tell prose from slop, so "argue with the readings" stays a
+`CLAUDE.md` rule a person reads. The ethics of observing strangers is a policy
+page and a named excluded-sites list, not an assertion — a nervous 20-year-old
+needs a sentence they can say out loud, not a green check.
