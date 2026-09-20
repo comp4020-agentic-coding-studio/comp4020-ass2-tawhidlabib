@@ -3,7 +3,7 @@
 ## What I Created
 
 SLOP3908, *Regulars: The Psychology of Third Places*, is a mix of lecture content and fieldwork against one argument: a third place
-is not an amenity but a structural need in life, and the what makes a regular feel special is the same mechanism that keeps everyone else out. This course is designed to teach people about the psychological benefits of "Third Places" as it has been a particular interest of mine recently.
+is not an amenity but a structural need in life, and what makes a regular feel special is the same mechanism that keeps everyone else out. This course is designed to teach people about the psychological benefits of "Third Places" as it has been a particular interest of mine recently.
 
 **Live:** https://comp4020-agentic-coding-studio.github.io/comp4020-ass2-tawhidlabib/
 
@@ -21,69 +21,55 @@ each other; Oldenburg set in week 1 and disputed for eleven more.
 ### Encoding the rules a machine can hold
 
 The agent's default output *is* a label-list — `Core Concept:` frontmatter
-dressed as prose — and I only caught it by reading the lectures end to end.
+dressed as prose — caught only by reading the lectures end to end.
 
-I wrote the rules into `CLAUDE.md`, then gave three of them a test as well as a
-sentence
-([`3819c60`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/3819c60)):
-every week has a lecture and a Round, every week sets a reading, no reading is
-orphaned. Motion is pinned to one gesture, never a static `opacity: 0` at rest
+I wrote the rules into `CLAUDE.md` and gave three of them tests
+([`3819c60`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/3819c60)): every week has a lecture and a Round, every week sets a
+reading, no reading is orphaned. Motion is pinned to one gesture
 ([`d9fd569`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d9fd569)).
 
-Rules a test holds get held. The rest are prose a person has to read.
-
-### A check that could not fail
-
-Four navigation pages shipped with no `<h1>` while axe reported all fifty-two
-clean, every time.
-
-I read the worker, not its report: it returns `results.violations` and never
-reads `results.incomplete`, and under jsdom a missing heading can only come
-back incomplete. I added them, and a test that counts them
-([`d2283c3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d2283c3)).
-
-A check that cannot fail launders absence of evidence into evidence. I now ask
-of a green check what would make it red.
+This is what made a team possible: six agents later inherited the same
+`CLAUDE.md` and argued about one course instead of inventing six.
 
 ### Contradictions that lived between pages
 
 Ten claims disagreed across the site while every page stayed internally
 consistent — the home page offered waiting rooms no Round visits.
 
-I read across the files instead of through them one at a time, which is how
-they were written
-([`2ea4cb9`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/2ea4cb9)).
+My first time running agents as a team: six lanes, each holding a different
+slice against the same rules. A contradiction needing two files to exist is
+invisible to whoever wrote either one ([`2ea4cb9`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/2ea4cb9)).
 
-Single-file review cannot see a contradiction that needs two files to exist.
+Fan-out buys breadth cheaply, and it is the one thing a team does that I cannot
+do serially.
 
 ### Trusting the sources, then checking them
 
 A DOI can be well-formed, resolve, and still be the wrong paper.
 
-`verify:citations` now checks every reading against Crossref instead of my
-memory
-([`860c477`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/860c477)).
-I swept the prose claims the same way and found two readings misstating their
-own papers
-([`b95d05b`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b95d05b)).
+`verify:citations` checks every reading against Crossref instead of my memory
+([`860c477`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/860c477)). The lane auditing empirical claims never reported — it hit the
+budget cap and its findings died with it — so I swept by hand and found two
+readings misstating their own papers ([`b95d05b`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b95d05b)).
 
-Twelve claim-sets were right; being right twelve times is not evidence about
-the thirteenth.
+An agent's findings are gone when the agent is, unless they land in a file
+first.
 
 ### Auditing the audit
 
-A green suite is not proof, and neither is this document.
+Four navigation pages shipped with no `<h1>` while axe called all fifty-two
+clean, and six lanes reported confidently on top of that.
 
-I mutation-tested the suite and five of its twelve assertions could not fail
-([`a9b41d3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/a9b41d3)).
-Then I turned it on this page: four of its claims were contradicted by the repo
-([`bc3df86`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/bc3df86)).
-The artwork was judged from rendered proofs, not the SVG that made it
-([`b3ece25`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b3ece25)),
-and the prose pass was a full read, not a sample
-([`ed317e3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/ed317e3)).
+I read the worker, not its report: it returns `results.violations` and never
+reads `results.incomplete`, so under jsdom a missing heading can only come back
+incomplete ([`d2283c3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d2283c3)). I mutation-tested the suite the lanes had blessed
+and five of twelve assertions could not fail ([`a9b41d3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/a9b41d3)). The same pass on
+this page found four claims the repo contradicted ([`bc3df86`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/bc3df86)); the artwork
+was judged from rendered proofs, not the SVG ([`b3ece25`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b3ece25)), and the prose
+pass was a full read, not a sample ([`ed317e3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/ed317e3)).
 
-The last thing to audit is always the instrument you audited with.
+A check that cannot fail launders absence of evidence into evidence. The team
+was worth it for reach, not certainty.
 
 ## What I left out
 
