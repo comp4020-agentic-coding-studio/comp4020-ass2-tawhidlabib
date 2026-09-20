@@ -2,8 +2,12 @@
 
 ## What I Created
 
-SLOP3908, *Regulars: The Psychology of Third Places*, is a mix of lecture content and fieldwork against one argument: a third place
-is not an amenity but a structural need in life, and what makes a regular feel special is the same mechanism that keeps everyone else out. This course is designed to teach people about the psychological benefits of "Third Places" as it has been a particular interest of mine recently.
+SLOP3908, *Regulars: The Psychology of Third Places*, is a mix of lecture
+content and fieldwork against one argument: a third place is not an amenity but
+a structural need in life, and what makes a regular feel special is the same
+mechanism that keeps everyone else out. This course is designed to teach people
+about the psychological benefits of "Third Places" as it has been a particular
+interest of mine recently.
 
 **Live:** https://comp4020-agentic-coding-studio.github.io/comp4020-ass2-tawhidlabib/
 
@@ -11,7 +15,11 @@ is not an amenity but a structural need in life, and what makes a regular feel s
 
 ### Narrowing the topic before writing content
 
-Initially, the course was based on the topic of "Belonging" as I believed that was the core concept of "Third Places"; the course used passive learning about the psychological need. With Claude, I was able to brainstorm how to develop the course into a better niche with an interesting, active learning structure that I have not yet encountered in university.
+Initially, the course was based on the topic of "Belonging" as I believed that
+was the core concept of "Third Places"; the course used passive learning about
+the psychological need. With Claude, I was able to brainstorm how to develop the
+course into a better niche with an interesting, active learning structure that I
+have not yet encountered in university.
 
 The commit where I narrowed it down to third places:
 ([`03f207a`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/03f207a)),
@@ -23,13 +31,14 @@ each other; Oldenburg set in week 1 and disputed for eleven more.
 The agent's default output *is* a label-list — `Core Concept:` frontmatter
 dressed as prose — caught only by reading the lectures end to end.
 
-I wrote the rules into `CLAUDE.md` and gave three of them tests
-([`3819c60`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/3819c60)): every week has a lecture and a Round, every week sets a
-reading, no reading is orphaned. Motion is pinned to one gesture
+I wrote the rules into `CLAUDE.md` and gave three tests
+([`3819c60`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/3819c60)):
+every week has a lecture and a Round, a reading, and no orphans. Motion is
+pinned to one gesture
 ([`d9fd569`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d9fd569)).
 
-This is what made a team possible: six agents later inherited the same
-`CLAUDE.md` and argued about one course instead of inventing six.
+This is what made a team possible: six agents inherited the same `CLAUDE.md` and
+argued about one course instead of inventing six.
 
 ### Contradictions that lived between pages
 
@@ -38,35 +47,41 @@ consistent — the home page offered waiting rooms no Round visits.
 
 My first time running agents as a team: six lanes, each holding a different
 slice against the same rules. A contradiction needing two files to exist is
-invisible to whoever wrote either one ([`2ea4cb9`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/2ea4cb9)).
+invisible to whoever wrote either one
+([`2ea4cb9`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/2ea4cb9)).
 
-Fan-out buys breadth cheaply, and it is the one thing a team does that I cannot
-do serially.
+Fan-out buys breadth cheaply — the one thing a team does that I cannot do
+serially.
 
 ### Trusting the sources, then checking them
 
 A DOI can be well-formed, resolve, and still be the wrong paper.
 
 `verify:citations` checks every reading against Crossref instead of my memory
-([`860c477`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/860c477)). The lane auditing empirical claims never reported — it hit the
-budget cap and its findings died with it — so I swept by hand and found two
-readings misstating their own papers ([`b95d05b`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b95d05b)).
+([`860c477`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/860c477)).
+The lane auditing empirical claims hit the budget cap and died with its
+findings, so I swept by hand and found two readings misstating their own papers
+([`b95d05b`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b95d05b)).
 
-An agent's findings are gone when the agent is, unless they land in a file
-first.
+An agent's findings are gone when the agent is, unless they land in a file.
 
 ### Auditing the audit
 
 Four navigation pages shipped with no `<h1>` while axe called all fifty-two
-clean, and six lanes reported confidently on top of that.
+clean, and six lanes reported confidently on top.
 
 I read the worker, not its report: it returns `results.violations` and never
-reads `results.incomplete`, so under jsdom a missing heading can only come back
-incomplete ([`d2283c3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d2283c3)). I mutation-tested the suite the lanes had blessed
-and five of twelve assertions could not fail ([`a9b41d3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/a9b41d3)). The same pass on
-this page found four claims the repo contradicted ([`bc3df86`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/bc3df86)); the artwork
-was judged from rendered proofs, not the SVG ([`b3ece25`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b3ece25)), and the prose
-pass was a full read, not a sample ([`ed317e3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/ed317e3)).
+`results.incomplete`, where a missing heading under jsdom can only land
+([`d2283c3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d2283c3)).
+I mutation-tested the suite the lanes had blessed: five of twelve assertions
+could not fail
+([`a9b41d3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/a9b41d3)).
+The same pass on this page found four claims the repo contradicted
+([`bc3df86`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/bc3df86));
+artwork was judged from rendered proofs, not the SVG
+([`b3ece25`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/b3ece25)),
+and prose from a full read, not a sample
+([`ed317e3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/ed317e3)).
 
 A check that cannot fail launders absence of evidence into evidence. The team
 was worth it for reach, not certainty.
@@ -76,4 +91,4 @@ was worth it for reach, not certainty.
 No test can tell prose from slop, so "argue with the readings" stays a
 `CLAUDE.md` rule a person reads. The ethics of observing strangers is a policy
 page and a named excluded-sites list, not an assertion — a nervous 20-year-old
-needs a sentence they can say out loud, not a green check.
+needs a sentence they can say out loud.
