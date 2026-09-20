@@ -28,8 +28,8 @@ each other; Oldenburg set in week 1 and disputed for eleven more.
 
 ### Encoding the rules a machine can hold
 
-The agent's default output *is* a label-list — `Core Concept:` frontmatter
-dressed as prose — caught only by reading the lectures end to end.
+The agent's default output is a label-list, `Core Concept:` frontmatter
+dressed as prose which was only caught by reading the lectures end to end.
 
 I wrote the rules into `CLAUDE.md` and gave three tests
 ([`3819c60`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/3819c60)):
@@ -37,21 +37,18 @@ every week has a lecture and a Round, a reading, and no orphans. Motion is
 pinned to one gesture
 ([`d9fd569`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/d9fd569)).
 
-This is what made a team possible: six agents inherited the same `CLAUDE.md` and
-argued about one course instead of inventing six.
+Creating a well structured claude md file with strict instructions on the rules the course creation must follow allowed me to use six agents that all inherited the same `CLAUDE.md` and argued about one course instead of inventing six completely different versions.
 
 ### Contradictions that lived between pages
 
 Ten claims disagreed across the site while every page stayed internally
-consistent — the home page offered waiting rooms no Round visits.
+consistent.
 
-My first time running agents as a team: six lanes, each holding a different
-slice against the same rules. A contradiction needing two files to exist is
-invisible to whoever wrote either one
+This project was my first time running numerous agents as a team. I used six agents, that held a different
+job against the same rules. Contradictions were found from the agent creating 1 page at a time; 2 pages must be considered to avoid a contradiction and are created from only considering 1 at a time
 ([`2ea4cb9`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/2ea4cb9)).
 
-Fan-out buys breadth cheaply — the one thing a team does that I cannot do
-serially.
+Utilising all the agents running concurrently allowed the audit of the site to be done significantly quicker. All agents reporting back to one place ensured that all course contradictions were found as both halves of a contradiction ended up together.
 
 ### Trusting the sources, then checking them
 
@@ -83,12 +80,5 @@ artwork was judged from rendered proofs, not the SVG
 and prose from a full read, not a sample
 ([`ed317e3`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/ed317e3)).
 
-A check that cannot fail launders absence of evidence into evidence. The team
-was worth it for reach, not certainty.
-
-## What I left out
-
-No test can tell prose from slop, so "argue with the readings" stays a
-`CLAUDE.md` rule a person reads. The ethics of observing strangers is a policy
-page and a named excluded-sites list, not an assertion — a nervous 20-year-old
-needs a sentence they can say out loud.
+A check that cannot fail launders absence of evidence into evidence. The agent team
+was worth it for reach.
