@@ -1,10 +1,9 @@
 # Process overview
 
-SLOP3908, *Regulars: The Psychology of Third Places*, is twelve Mondays of
-lecture and twelve Thursdays of fieldwork against one argument: a third place
-is not an amenity but a structural need, and the exclusion that makes a regular
-feel like a regular is the same mechanism that keeps everyone else out.
-Fourteen readings, three assessments, and no week opens on a definition.
+## What I Created
+
+SLOP3908, *Regulars: The Psychology of Third Places*, is a mix of lecture content and fieldwork against one argument: a third place
+is not an amenity but a structural need in life, and the what makes a regular feel special is the same mechanism that keeps everyone else out. This course is designed to teach people about the psychological benefits of "Third Places" as it has been a particular interest of mine recently.
 
 **Live:** https://comp4020-agentic-coding-studio.github.io/comp4020-ass2-tawhidlabib/
 
@@ -12,16 +11,12 @@ Fourteen readings, three assessments, and no week opens on a definition.
 
 ### Narrowing the topic before writing content
 
-The course began as the shape an agent defaults to: a twelve-week survey of
-"belonging," with no argument to hold onto.
+Initially, the course was based on the topic of "Belonging" as I believed that was the core concept of "Third Places"; the course used passive learning about the psychological need. With Claude, I was able to brainstorm how to develop the course into a better niche with an interesting, active learning structure that I have not yet encountered in university.
 
-I narrowed it to third places
+The commit where I narrowed it down to third places:
 ([`03f207a`](https://github.com/comp4020-agentic-coding-studio/comp4020-ass2-tawhidlabib/commit/03f207a)),
 because a survey lets every week stand alone and I wanted weeks that argue with
-each other — Oldenburg set in week 1 and disputed for eleven more.
-
-That cost breadth, and bought a course a student can hold as one claim instead
-of twelve.
+each other; Oldenburg set in week 1 and disputed for eleven more.
 
 ### Encoding the rules a machine can hold
 
